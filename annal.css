@@ -1,0 +1,566 @@
+/*!
+ * Annal 卷帙 (Light) — Wide Academic & Editorial Typora Theme
+ *
+ * Combines GitHub Markdown hierarchy & 1200px wide reading proportions
+ * with classic Chinese scholarly typography (Song / Hei / Kai / FangSong + Times New Roman)
+ * and cinnabar-red editorial accents.
+ *
+ * Palette & Chinese font stack inspired by typora-theme-gongwen (Copyright (c) 2026 MochiaoChen, MIT License).
+ * Released under the MIT License.
+ */
+
+@font-face {
+    font-family: "Annal XiaoBiaoSong";
+    font-weight: 900;
+    src: local("FZXiaoBiaoSong-B05S"), local("方正小标宋简体"),
+        local("FZXBSJW--GB1-0"), local("FZXiaoBiaoSong-B05"),
+        local("方正小标宋_GBK"), local("FZXBSK--GBK1-0");
+}
+
+@font-face {
+    font-family: "Annal Hei";
+    src: local("SimHei"), local("黑体"), local("STHeitiSC-Medium"),
+        local("Heiti SC Medium");
+}
+
+:root {
+    /* ---- Annal 书卷字体栈 ---- */
+    --annal-font-latin: "Times New Roman", "Times", "Liberation Serif", "Tinos";
+    --annal-font-fangsong: var(--annal-font-latin), "FangSong_GB2312", "仿宋_GB2312",
+        "FangSong", "仿宋", "STFangsong", "华文仿宋", "Zhuque Fangsong (technical preview)",
+        "Zhuque Fangsong", "朱雀仿宋", serif;
+    --annal-font-hei: var(--annal-font-latin), "Annal Hei", "STHeiti", "Source Han Sans SC",
+        "Noto Sans SC", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei",
+        sans-serif;
+    --annal-font-kai: var(--annal-font-latin), "KaiTi_GB2312", "楷体_GB2312", "KaiTi",
+        "楷体", "Kaiti SC", "STKaiti", "华文楷体", "LXGW WenKai", "霞鹜文楷", serif;
+    --annal-font-xiaobiaosong: var(--annal-font-latin), "Annal XiaoBiaoSong", "Source Han Serif SC",
+        "Source Han Serif SC VF", "Source Han Serif CN", "思源宋体",
+        "Noto Serif SC", "Noto Serif CJK SC", "Songti SC", "STZhongsong",
+        "华文中宋", "SimSun", "宋体", serif;
+    --annal-font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas,
+        "Liberation Mono", "FangSong_GB2312", monospace;
+
+    /* ---- Annal 宣纸白底色板 ---- */
+    --annal-paper: #ffffff;
+    --annal-desk: #f2f1ee;
+    --annal-ink: #111111;
+    --annal-ink-soft: #3d3d3d;
+    --annal-muted: #8a8780;
+    --annal-red: #d40000;
+    --annal-highlight: #fff200;
+    --annal-highlight-text: #111111;
+    --annal-border: #d9d6d0;
+    --annal-code-bg: #f6f5f2;
+    --annal-quote-bar: #c9c5bd;
+    --annal-selection: rgba(212, 0, 0, 0.14);
+
+    --annal-cm-keyword: #a3141a;
+    --annal-cm-string: #2f6b3a;
+    --annal-cm-number: #8a4b08;
+    --annal-cm-comment: #8c8a85;
+    --annal-cm-def: #1a4d8f;
+    --annal-cm-variable2: #4b3a8c;
+    --annal-cm-meta: #6b6862;
+
+    /* ---- Typora 全局颜色变量 ---- */
+    --bg-color: var(--annal-paper);
+    --text-color: var(--annal-ink);
+    --primary-color: var(--annal-red);
+    --side-bar-bg-color: var(--annal-desk);
+    --control-text-color: var(--annal-ink-soft);
+    --control-text-hover-color: var(--annal-ink);
+    --window-border: 1px solid var(--annal-border);
+    --active-file-bg-color: #e7e4de;
+    --active-file-text-color: var(--annal-ink);
+    --active-file-border-color: var(--annal-red);
+    --item-hover-bg-color: #ebe8e2;
+    --item-hover-text-color: var(--annal-ink);
+    --select-text-bg-color: var(--annal-selection);
+    --select-text-font-color: inherit;
+    --md-char-color: #b5b1a9;
+    --meta-content-color: var(--annal-muted);
+    --heading-char-color: #b5b1a9;
+    --blur-text-color: #c8c4bc;
+    --monospace: var(--annal-font-mono);
+    --code-block-bg-color: var(--annal-code-bg);
+    --rawblock-edit-panel-bd: var(--annal-code-bg);
+    --mermaid-theme: default;
+
+    color-scheme: light;
+}
+
+html {
+    font-size: 20px;
+    background-color: var(--annal-paper);
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: var(--annal-font-fangsong);
+    background-color: var(--annal-paper);
+    color: var(--annal-ink);
+    line-height: 1.68;
+}
+
+#write {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 30px 100px;
+}
+
+#typora-source .CodeMirror-lines {
+    max-width: 1200px;
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: var(--annal-red);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    color: var(--annal-ink);
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-family: var(--annal-font-xiaobiaosong);
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid var(--annal-border);
+}
+h2 {
+    font-family: var(--annal-font-hei);
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid var(--annal-border);
+}
+
+h3 {
+    font-family: var(--annal-font-kai);
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-family: var(--annal-font-fangsong);
+    font-size: 1.25em;
+}
+h5 {
+    font-family: var(--annal-font-fangsong);
+    font-size: 1em;
+}
+h6 {
+    font-family: var(--annal-font-fangsong);
+    font-size: 1em;
+    color: var(--annal-muted);
+}
+
+em {
+    font-family: var(--annal-font-kai);
+    font-style: normal;
+}
+
+del {
+    color: var(--annal-muted);
+}
+
+mark {
+    background-color: var(--annal-highlight);
+    color: var(--annal-highlight-text);
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: var(--annal-red);
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    font-family: var(--annal-font-kai);
+    border-left: 4px solid var(--annal-quote-bar);
+    padding: 0 15px;
+    color: var(--annal-ink-soft);
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid var(--annal-border);
+    background-color: var(--annal-paper);
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: var(--annal-code-bg);
+}
+table th {
+    font-family: var(--annal-font-hei);
+    font-weight: bold;
+    border: 1px solid var(--annal-border);
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid var(--annal-border);
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0, 28, 36, 0.15);
+    border-top: 1px solid var(--annal-border);
+    background-color: var(--annal-paper);
+    color: var(--annal-ink-soft);
+}
+
+.md-fences,
+code,
+tt {
+    font-family: var(--annal-font-mono);
+    border: 1px solid var(--annal-border);
+    background-color: var(--annal-code-bg);
+    color: var(--annal-ink);
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: var(--annal-code-bg);
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+/* 代码块亮色语法着色 */
+.CodeMirror-gutters {
+    border-right: 1px solid var(--annal-border);
+    background: transparent;
+}
+.CodeMirror-linenumber {
+    color: var(--annal-muted);
+}
+.CodeMirror-cursor {
+    border-left-color: var(--annal-ink) !important;
+}
+.cm-s-inner.CodeMirror,
+.cm-s-inner .cm-variable {
+    color: var(--annal-ink);
+}
+.cm-s-inner .cm-keyword,
+.cm-s-inner .cm-tag {
+    color: var(--annal-cm-keyword);
+}
+.cm-s-inner .cm-string,
+.cm-s-inner .cm-string-2,
+.cm-s-inner .cm-quote {
+    color: var(--annal-cm-string);
+}
+.cm-s-inner .cm-number,
+.cm-s-inner .cm-atom,
+.cm-s-inner .cm-attribute {
+    color: var(--annal-cm-number);
+}
+.cm-s-inner .cm-comment {
+    color: var(--annal-cm-comment);
+    font-style: italic;
+}
+.cm-s-inner .cm-def,
+.cm-s-inner .cm-property,
+.cm-s-inner .cm-builtin,
+.cm-s-inner .cm-type,
+.cm-s-inner .cm-variable-3,
+.cm-s-inner .cm-link,
+.cm-s-inner .cm-url {
+    color: var(--annal-cm-def);
+}
+.cm-s-inner .cm-variable-2,
+.cm-s-inner .cm-qualifier {
+    color: var(--annal-cm-variable2);
+}
+.cm-s-inner .cm-meta,
+.cm-s-inner .cm-operator,
+.cm-s-inner .cm-bracket {
+    color: var(--annal-cm-meta);
+}
+.cm-s-inner .cm-header {
+    color: var(--annal-ink);
+    font-weight: bold;
+}
+.cm-s-inner .cm-hr {
+    color: var(--annal-muted);
+}
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+  accent-color: var(--annal-red);
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    html,
+    body,
+    #write {
+        background-color: var(--annal-paper) !important;
+        color: var(--annal-ink) !important;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: var(--annal-code-bg);
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    font-family: var(--annal-font-mono);
+    background-color: var(--annal-code-bg);
+    border: 0;
+    border-radius: 3px;
+    color: var(--annal-muted);
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: var(--annal-paper);
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: var(--annal-muted);
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+sup.md-footnote {
+    font-family: var(--annal-font-latin);
+    background-color: #fbeaea;
+    border: 1px solid #f0c9c9;
+    color: var(--annal-red);
+    line-height: 1;
+    padding: 1px 5px;
+    border-radius: 4px;
+}
+
+.footnotes-area,
+.footnotes {
+    color: var(--annal-ink-soft);
+}
+
+.md-def-name {
+    color: var(--annal-red);
+}
+
+.md-def-name::before,
+.md-def-name::after {
+    color: var(--md-char-color);
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid var(--annal-border);
+    background-color: var(--annal-code-bg);
+}
+
+#typora-quick-open-item {
+    background-color: var(--annal-paper);
+    border-color: var(--annal-border);
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.16);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: var(--annal-desk);
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: var(--annal-red);
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: var(--annal-border);
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: var(--annal-desk);
+}
+
+.ty-preferences .nav-group-item.active {
+    color: #ffffff;
+    background: #8a8780;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: var(--annal-code-bg);
+    background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0));
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(128, 124, 116, 0.35);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 124, 116, 0.55);
+}
