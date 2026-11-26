@@ -1,15 +1,12 @@
-<img width="1286" height="854" alt="image" src="https://github.com/user-attachments/assets/7cd7adb4-379b-46f6-a935-852254ed1394" />
-<img width="1470" height="923" alt="image" src="https://github.com/user-attachments/assets/1ee3953c-4bd3-4628-9ceb-41626f885b2e" />
-<img width="1470" height="924" alt="image" src="https://github.com/user-attachments/assets/b11c88f2-a4ba-4688-8842-635177f6c372" />
-<img width="1470" height="922" alt="image" src="https://github.com/user-attachments/assets/960acba1-a092-4fb4-9840-eec47d5f9c9e" />
-<img width="1470" height="923" alt="image" src="https://github.com/user-attachments/assets/f453f546-ffb4-482e-aae4-4eb59b27a88c" />
-<img width="1457" height="842" alt="image" src="https://github.com/user-attachments/assets/0ee04195-9270-4da3-b20b-fe6cb42ad9be" />
-
 # Annal · 卷帙 — Typora Theme
 
 一套专为**学术写作、长文研究稿与深度阅读**打造的宽屏 Typora 主题，提供亮色（**Annal**）与护眼暖墨暗色（**Annal Dark**）双版本。
 
 A wide-screen academic and editorial theme for Typora, pairing clean GitHub-style Markdown hierarchy with classic Chinese scholarly typography and warm pine-soot ink palettes — in both Light (**Annal**) and Dark (**Annal Dark**) variants.
+
+![Annal Light](screenshots/annal-light.png)
+
+![Annal Dark](screenshots/annal-dark.png)
 
 ---
 
